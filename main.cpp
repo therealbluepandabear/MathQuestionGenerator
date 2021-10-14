@@ -54,11 +54,12 @@ private:
             }
         }
     }
+
 public:
-    static void GenerateQuestions(const int amount, const QuestionType questionType, const QuestionDifficulty questionDifficulty) {
+    static void GenerateQuestion(const QuestionType questionType, const QuestionDifficulty questionDifficulty) {
         switch (questionType) {
             case QuestionType::BASIC_ARITHMETIC:
-                std::cout << GenerateArithmeticQuestion(QuestionDifficulty::EASY) << std::endl;
+                std::cout << GenerateArithmeticQuestion(QuestionDifficulty::EASY) << "\n";
                 break;
             case QuestionType::ALGEBRA:
                 break;
@@ -84,7 +85,9 @@ static int ToArithmeticAnswer(const int left, const int right, const char operat
 }
 
 int main() {
-    MathQuestionGenerator::GenerateQuestions(0, QuestionType::BASIC_ARITHMETIC, QuestionDifficulty::EASY);
+    for (int i = 0; i < 20; ++i) {
+        MathQuestionGenerator::GenerateQuestion(QuestionType::BASIC_ARITHMETIC, QuestionDifficulty::EASY);
+    }
     return 0;
 }
 
