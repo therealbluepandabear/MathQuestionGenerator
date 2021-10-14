@@ -44,26 +44,32 @@ private:
     std::pair<std::string, double> GenerateArithmeticQuestion(QuestionDifficulty questionDifficulty) {
         switch (questionDifficulty) {
             case QuestionDifficulty::EASY: {
-                        bool isAddition;
-                        if (RandomNumberGenerator::Random(1, 2) == 1) isAddition = true; else isAddition = false;
+                bool isAddition;
+                if (RandomNumberGenerator::Random(1, 2) == 1) isAddition = true; else isAddition = false;
 
-                        int left = RandomNumberGenerator::Random(1, 10);
-                        int right = RandomNumberGenerator::Random(1, 10);
+                int left = RandomNumberGenerator::Random(1, 10);
+                int right = RandomNumberGenerator::Random(1, 10);
 
-                        std::string operationStr;
+                std::string operationStr;
 
-                        if (isAddition) operationStr = "+"; else operationStr = "-";
+                if (isAddition) operationStr = "+"; else operationStr = "-";
 
-                        return std::make_pair(std::to_string(left) + " " + operationStr + " " + std::to_string(right),
-                        ToArithmeticAnswer(left, right, operationStr));
-                        break;
-                }
-            case QuestionDifficulty::MEDIUM:
+                return std::make_pair(std::to_string(left) + " " + operationStr + " " + std::to_string(right),
+                                      ToArithmeticAnswer(left, right, operationStr));
                 break;
-            case QuestionDifficulty::HARD:
+            }
+            case QuestionDifficulty::MEDIUM: {
+
                 break;
-            case QuestionDifficulty::ADVANCED:
+            }
+            case QuestionDifficulty::HARD: {
+
                 break;
+            }
+            case QuestionDifficulty::ADVANCED: {
+
+                break;
+            }
         }
     }
 public:
