@@ -9,7 +9,10 @@ enum class QuestionType {
 };
 
 class MathQuestionGenerator {
+public:
+    void GenerateQuestions(int amount, QuestionType questionType, QuestionDifficulty questionDifficulty) {
 
+    }
 };
 
 int main() {
