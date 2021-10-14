@@ -30,6 +30,7 @@ private:
     }
 
     static const std::string GenerateArithmeticQuestion(const QuestionDifficulty questionDifficulty) {
+        std::string val;
         switch (questionDifficulty) {
             case QuestionDifficulty::EASY: {
                 int left = RandomNumberGenerator::Random(1, 10);
@@ -37,12 +38,15 @@ private:
 
                 char operator_ = GenRandElement({'+', '-'});
 
-                return (std::to_string(left) + " " + operator_ + " " + std::to_string(right));
-                break;
+                val = (std::to_string(left) + " " + operator_ + " " + std::to_string(right));
             }
             case QuestionDifficulty::MEDIUM: {
+                int left = RandomNumberGenerator::Random(1, 25);
+                int right = RandomNumberGenerator::Random(1, 25);
 
-                break;
+                char operator_ = GenRandElement({'+', '-'});
+
+                val = (std::to_string(left) + " " + operator_ + " " + std::to_string(right));
             }
             case QuestionDifficulty::HARD: {
 
@@ -53,6 +57,7 @@ private:
                 break;
             }
         }
+        return val;
     }
 
 public:
