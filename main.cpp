@@ -49,12 +49,20 @@ private:
                 val = (std::to_string(left) + " " + operator_ + " " + std::to_string(right));
             }
             case QuestionDifficulty::HARD: {
+                int left = RandomNumberGenerator::Random(1, 12);
+                int right = RandomNumberGenerator::Random(1, 12);
 
-                break;
+                char operator_ = GenRandElement({'*', '/'});
+
+                val = (std::to_string(left) + " " + operator_ + " " + std::to_string(right));
             }
             case QuestionDifficulty::ADVANCED: {
+                int left = RandomNumberGenerator::Random(1, 75);
+                int right = RandomNumberGenerator::Random(1, 75);
 
-                break;
+                char operator_ = GenRandElement({'*', '/'});
+
+                val = (std::to_string(left) + " " + operator_ + " " + std::to_string(right));
             }
         }
         return val;
