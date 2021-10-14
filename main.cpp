@@ -25,10 +25,39 @@ public:
 
 class MathQuestionGenerator {
 private:
+    static int ToArithmeticAnswer(int left, int right, std::string &operationStr) {
+        switch (operationStr[0]) {
+            case '+':
+                return left + right;
+                break;
+            case '-':
+                return left - right;
+                break;
+            case '*':
+                return left * right;
+                break;
+            case '/':
+                return left / right;
+                break;
+        }
+    }
     std::pair<std::string, double> GenerateArithmeticQuestion(QuestionDifficulty questionDifficulty) {
         switch (questionDifficulty) {
-            case QuestionDifficulty::EASY:
-                break;
+            case QuestionDifficulty::EASY: {
+                        bool isAddition;
+                        if (RandomNumberGenerator::Random(1, 2) == 1) isAddition = true; else isAddition = false;
+
+                        int left = RandomNumberGenerator::Random(1, 10);
+                        int right = RandomNumberGenerator::Random(1, 10);
+
+                        std::string operationStr;
+
+                        if (isAddition) operationStr = "+"; else operationStr = "-";
+
+                        return std::make_pair(std::to_string(left) + " " + operationStr + " " + std::to_string(right),
+                        ToArithmeticAnswer(left, right, operationStr));
+                        break;
+                }
             case QuestionDifficulty::MEDIUM:
                 break;
             case QuestionDifficulty::HARD:
