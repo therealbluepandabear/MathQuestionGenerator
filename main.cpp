@@ -1,4 +1,6 @@
 #include <iostream>
+#include <ctime>
+#include <random>
 
 enum class QuestionDifficulty {
     EASY, MEDIUM, HARD, ADVANCED
@@ -6,6 +8,20 @@ enum class QuestionDifficulty {
 
 enum class QuestionType {
     BASIC_ARITHMETIC, ALGEBRA
+};
+
+class RandomNumberGenerator {
+    // NAWAZ'S STACKOVERFLOW CODE LINK: https://stackoverflow.com/questions/7560114/random-number-c-in-some-range
+    static int random(int min, int max)
+    {
+        static bool first = true;
+        if (first)
+        {
+            srand( time(NULL) );
+            first = false;
+        }
+        return min + rand() % (( max + 1 ) - min);
+    }
 };
 
 class MathQuestionGenerator {
@@ -34,6 +50,6 @@ public:
 };
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
     return 0;
 }
+
