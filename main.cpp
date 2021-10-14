@@ -11,8 +11,9 @@ enum class QuestionType {
 };
 
 class RandomNumberGenerator {
+public:
     // NAWAZ'S STACKOVERFLOW CODE LINK: https://stackoverflow.com/questions/7560114/random-number-c-in-some-range
-    static int random(int min, int max) {
+    static int Random(int min, int max) {
         static bool first = true;
         if (first) {
             srand( time(NULL) );
