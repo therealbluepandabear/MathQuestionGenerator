@@ -4,6 +4,10 @@ enum class QuestionDifficulty {
     EASY, MEDIUM, HARD, ADVANCED
 };
 
+enum class QuestionType {
+    BASIC_ARITHMETIC, ALGEBRA
+};
+
 class MathQuestionGenerator {
 
 };
