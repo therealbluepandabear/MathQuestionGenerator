@@ -11,7 +11,16 @@ enum class QuestionType {
 class MathQuestionGenerator {
 private:
     std::pair<std::string, double> GenerateArithmeticQuestion(QuestionDifficulty questionDifficulty) {
-
+        switch (questionDifficulty) {
+            case QuestionDifficulty::EASY:
+                break;
+            case QuestionDifficulty::MEDIUM:
+                break;
+            case QuestionDifficulty::HARD:
+                break;
+            case QuestionDifficulty::ADVANCED:
+                break;
+        }
     }
 public:
     void GenerateQuestions(int amount, QuestionType questionType, QuestionDifficulty questionDifficulty) {
