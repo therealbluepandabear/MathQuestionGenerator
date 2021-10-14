@@ -13,10 +13,10 @@ enum class QuestionType {
 class RandomNumberGenerator {
 public:
     // NAWAZ'S STACKOVERFLOW CODE LINK: https://stackoverflow.com/questions/7560114/random-number-c-in-some-range
-    static int Random(int min, int max) {
+    static int Random(const int min, const int max) {
         static bool first = true;
         if (first) {
-            srand( time(NULL) );
+            srand( time(nullptr) );
             first = false;
         }
         return min + rand() % (( max + 1 ) - min);
@@ -25,7 +25,7 @@ public:
 
 class MathQuestionGenerator {
 private:
-    static int ToArithmeticAnswer(int left, int right, std::string &operationStr) {
+    static int ToArithmeticAnswer(const int left, const int right, const std::string &operationStr) {
         switch (operationStr[0]) {
             case '+':
                 return left + right;
@@ -41,7 +41,7 @@ private:
                 break;
         }
     }
-    std::pair<std::string, double> GenerateArithmeticQuestion(QuestionDifficulty questionDifficulty) {
+    static std::pair<const std::string, const double> GenerateArithmeticQuestion(const QuestionDifficulty questionDifficulty) {
         switch (questionDifficulty) {
             case QuestionDifficulty::EASY: {
                 bool isAddition;
@@ -73,7 +73,7 @@ private:
         }
     }
 public:
-    void GenerateQuestions(int amount, QuestionType questionType, QuestionDifficulty questionDifficulty) {
+    static void GenerateQuestions(const int amount, const QuestionType questionType, const QuestionDifficulty questionDifficulty) {
         switch (questionType) {
             case QuestionType::BASIC_ARITHMETIC:
                 break;
