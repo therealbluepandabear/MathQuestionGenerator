@@ -1,5 +1,8 @@
 #include <iostream>
 
+enum class QuestionDifficulty {
+    EASY, MEDIUM, HARD, ADVANCED
+};
 
 class MathQuestionGenerator {
 
