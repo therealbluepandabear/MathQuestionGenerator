@@ -25,37 +25,19 @@ public:
 
 class MathQuestionGenerator {
 private:
-    static int ToArithmeticAnswer(const int left, const int right, const std::string &operationStr) {
-        switch (operationStr[0]) {
-            case '+':
-                return left + right;
-                break;
-            case '-':
-                return left - right;
-                break;
-            case '*':
-                return left * right;
-                break;
-            case '/':
-                return left / right;
-                break;
-        }
+    static char GenRandElement(std::vector<char> vector) {
+        return vector[rand() % vector.size()];
     }
-    static std::pair<const std::string, const double> GenerateArithmeticQuestion(const QuestionDifficulty questionDifficulty) {
+
+    static const std::string GenerateArithmeticQuestion(const QuestionDifficulty questionDifficulty) {
         switch (questionDifficulty) {
             case QuestionDifficulty::EASY: {
-                bool isAddition;
-                if (RandomNumberGenerator::Random(1, 2) == 1) isAddition = true; else isAddition = false;
-
                 int left = RandomNumberGenerator::Random(1, 10);
                 int right = RandomNumberGenerator::Random(1, 10);
 
-                std::string operationStr;
+                char operator_ = GenRandElement({'+', '-'});
 
-                if (isAddition) operationStr = "+"; else operationStr = "-";
-
-                return std::make_pair(std::to_string(left) + " " + operationStr + " " + std::to_string(right),
-                                      ToArithmeticAnswer(left, right, operationStr));
+                return (std::to_string(left) + " " + operator_ + " " + std::to_string(right));
                 break;
             }
             case QuestionDifficulty::MEDIUM: {
@@ -76,6 +58,7 @@ public:
     static void GenerateQuestions(const int amount, const QuestionType questionType, const QuestionDifficulty questionDifficulty) {
         switch (questionType) {
             case QuestionType::BASIC_ARITHMETIC:
+                std::cout << GenerateArithmeticQuestion(QuestionDifficulty::EASY) << std::endl;
                 break;
             case QuestionType::ALGEBRA:
                 break;
@@ -83,7 +66,25 @@ public:
     }
 };
 
+static int ToArithmeticAnswer(const int left, const int right, const char operationStr) {
+    switch (operationStr) {
+        case '+':
+            return left + right;
+            break;
+        case '-':
+            return left - right;
+            break;
+        case '*':
+            return left * right;
+            break;
+        case '/':
+            return left / right;
+            break;
+    }
+}
+
 int main() {
+    MathQuestionGenerator::GenerateQuestions(0, QuestionType::BASIC_ARITHMETIC, QuestionDifficulty::EASY);
     return 0;
 }
 
