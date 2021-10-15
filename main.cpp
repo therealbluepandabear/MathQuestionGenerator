@@ -20,7 +20,9 @@ public:
 };
 
 class AlgebraicQuestionGenerator {
-
+private:
+    struct quadratic_equation_question {
+    };
 };
 
 class ArithmeticQuestionGenerator {
