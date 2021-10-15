@@ -32,9 +32,9 @@ private:
             }
         };
     public:
-        double a, b, c;
+        int a, b, c;
 
-        quadratic_equation_question(const double _a, const double _b, const double _c) {
+        quadratic_equation_question(const int _a, const int _b, const int _c) {
             a = _a;
             b = _b;
             c = _c;
@@ -44,7 +44,7 @@ private:
             double positiveRoot = (-b + sqrt(pow(b, 2) - 4 * a * c))/(2 * a);
             double negativeRoot = (-b - sqrt(pow(b, 2) - 4 * a * c))/(2 * a);
 
-            return root(positiveRoot, negativeRoot);
+            return root { positiveRoot, negativeRoot };
         }
 
         [[nodiscard]] std::string ToString() const {
@@ -54,9 +54,9 @@ private:
 
     static quadratic_equation_question GenerateAlgebraicQuestion() {
         return quadratic_equation_question {
-            (double)(RandomNumberGenerator::Random(1, 10)),
-            (double)RandomNumberGenerator::Random(1, 10),
-            (double)RandomNumberGenerator::Random(1, 10)};
+            RandomNumberGenerator::Random(1, 10),
+            RandomNumberGenerator::Random(1, 10),
+            RandomNumberGenerator::Random(1, 10)};
     }
 public:
     static quadratic_equation_question GenerateQuestion() {
@@ -148,10 +148,7 @@ public:
 };
 
 int main() {
-    auto vector = ArithmeticQuestionGenerator::GenerateQuestions(QuestionDifficulty::EASY, 10);
-    for (auto s : vector) {
-        std::cout << s.ToString() << '\n';
-    }
+
     return 0;
 }
 
