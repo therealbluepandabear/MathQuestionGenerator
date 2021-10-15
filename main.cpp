@@ -46,6 +46,10 @@ private:
 
             return root(positiveRoot, negativeRoot);
         }
+
+        [[nodiscard]] std::string ToString() const {
+            return "Find the root of " + std::to_string(a) + "x^2" + " + " + std::to_string(b) + "x" + " + " + std::to_string(c);
+        }
     };
 };
 
