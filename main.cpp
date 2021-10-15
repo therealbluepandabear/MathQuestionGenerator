@@ -51,6 +51,10 @@ private:
             return "Find the root of " + std::to_string(a) + "x^2" + " + " + std::to_string(b) + "x" + " + " + std::to_string(c);
         }
     };
+
+    quadratic_equation_question GenerateAlgebraicQuestion() {
+
+    }
 };
 
 class ArithmeticQuestionGenerator {
