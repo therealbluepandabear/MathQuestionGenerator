@@ -91,10 +91,22 @@ public:
                 break;
         }
     }
+
+    static std::vector<question_t> GenerateQuestions(const QuestionType questionType, const QuestionDifficulty questionDifficulty, const int amount) {
+        std::vector<question_t> vector;
+        for (int i = 0; i < amount; i++) {
+            auto question = GenerateQuestion(questionType, questionDifficulty);
+            vector.push_back(question);
+        }
+        return vector;
+    }
 };
 
 int main() {
-    std::cout << MathQuestionGenerator::GenerateQuestion(QuestionType::BASIC_ARITHMETIC, QuestionDifficulty::EASY).ToString();
+    auto vector = MathQuestionGenerator::GenerateQuestions(QuestionType::BASIC_ARITHMETIC, QuestionDifficulty::EASY, 10);
+    for (auto s : vector) {
+        std::cout << s.ToString() << '\n';
+    }
     return 0;
 }
 
