@@ -56,7 +56,7 @@ private:
         return quadratic_equation_question {
             RandomNumberGenerator::Random(1, 10),
             RandomNumberGenerator::Random(1, 10),
-            RandomNumberGenerator::Random(1, 10)};
+            -RandomNumberGenerator::Random(1, 10)};
     }
 public:
     static quadratic_equation_question GenerateQuestion() {
@@ -148,7 +148,9 @@ public:
 };
 
 int main() {
+    auto question = AlgebraicQuestionGenerator::GenerateQuestion();
 
+    std::cout << question.ToString() << " " << question.GetRoot().positiveRoot << std::endl;
     return 0;
 }
 
