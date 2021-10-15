@@ -22,6 +22,30 @@ public:
 class AlgebraicQuestionGenerator {
 private:
     struct quadratic_equation_question {
+    private:
+        struct root {
+            double positiveRoot, negativeRoot;
+
+            root(const double _positiveRoot, const double _negativeRoot) {
+                positiveRoot = _positiveRoot;
+                negativeRoot = _negativeRoot;
+            }
+        };
+    public:
+        double a, b, c;
+
+        quadratic_equation_question(const double _a, const double _b, const double _c) {
+            a = _a;
+            b = _b;
+            c = _c;
+        }
+
+        [[nodiscard]] root GetRoot() const {
+            double positiveRoot = (-b + sqrt(pow(b, 2) - 4 * a * c))/(2 * a);
+            double negativeRoot = (-b - sqrt(pow(b, 2) - 4 * a * c))/(2 * a);
+
+            return root(positiveRoot, negativeRoot);
+        }
     };
 };
 
