@@ -29,13 +29,13 @@ private:
         int left, right;
         char operand;
 
-        question_t(int _left, int _right, char _operand) {
+        question_t(const int _left, const int _right, const char _operand) {
             left = _left;
             right = _right;
             operand = _operand;
         }
 
-        int GetAnswer() {
+        [[nodiscard]] int GetAnswer() const {
             switch (operand) {
                 case '+': return left + right;
                 case '-': return left - right;
@@ -44,7 +44,7 @@ private:
             }
         }
 
-        std::string ToString() {
+        [[nodiscard]] std::string ToString() const {
             return std::to_string(left) + " " + operand + " " + std::to_string(right);
         }
     };
@@ -52,38 +52,34 @@ private:
         return vector[rand() % vector.size()];
     }
 
-    static const question_t GenerateArithmeticQuestion(const QuestionDifficulty questionDifficulty) {
+    static question_t GenerateArithmeticQuestion(const QuestionDifficulty questionDifficulty) {
         switch (questionDifficulty) {
             case QuestionDifficulty::EASY: {
                 return question_t(
                         RandomNumberGenerator::Random(1, 10),
                         RandomNumberGenerator::Random(1, 10),
                         GenRandElement({'+', '-'}));
-                break;
             }
             case QuestionDifficulty::MEDIUM: {
                 return question_t(
                         RandomNumberGenerator::Random(1, 25),
                         RandomNumberGenerator::Random(1, 25),
                         GenRandElement({'+', '-'}));
-                break;
             }
             case QuestionDifficulty::HARD: {
                 return question_t(
                         RandomNumberGenerator::Random(1, 10),
                         RandomNumberGenerator::Random(1, 10),
                         GenRandElement({'*', '/'}));
-                break;
             }
             case QuestionDifficulty::ADVANCED: {
                 return question_t(
                         RandomNumberGenerator::Random(1, 25),
                         RandomNumberGenerator::Random(1, 25),
                         GenRandElement({'*', '/'}));
-                break;
             }
         }
-        return question_t(0, 0, '\0');
+        return question_t {0, 0, '\0'};
     }
 
 public:
@@ -91,6 +87,8 @@ public:
         switch (questionType) {
             case QuestionType::BASIC_ARITHMETIC:
                 return GenerateArithmeticQuestion(questionDifficulty);
+            case QuestionType::ALGEBRA:
+                break;
         }
     }
 };
