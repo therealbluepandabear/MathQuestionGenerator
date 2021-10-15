@@ -52,11 +52,24 @@ private:
         }
     };
 
-    quadratic_equation_question GenerateAlgebraicQuestion() {
+    static quadratic_equation_question GenerateAlgebraicQuestion() {
         return quadratic_equation_question {
             (double)(RandomNumberGenerator::Random(1, 10)),
             (double)RandomNumberGenerator::Random(1, 10),
             (double)RandomNumberGenerator::Random(1, 10)};
+    }
+public:
+    static quadratic_equation_question GenerateQuestion() {
+        return GenerateAlgebraicQuestion();
+    }
+
+    static std::vector<quadratic_equation_question> GenerateQuestions(const int amount) {
+        std::vector<quadratic_equation_question> vector;
+        for (int i = 0; i < amount; i++) {
+            auto question = GenerateQuestion();
+            vector.push_back(question);
+        }
+        return vector;
     }
 };
 
