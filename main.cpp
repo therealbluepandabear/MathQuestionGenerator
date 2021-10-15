@@ -19,6 +19,10 @@ public:
     }
 };
 
+class AlgebraicQuestionGenerator {
+
+};
+
 class ArithmeticQuestionGenerator {
 private:
     struct question_t {
