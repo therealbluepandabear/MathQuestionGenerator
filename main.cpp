@@ -33,36 +33,44 @@ private:
         std::string val;
         switch (questionDifficulty) {
             case QuestionDifficulty::EASY: {
-                int left = RandomNumberGenerator::Random(1, 10);
-                int right = RandomNumberGenerator::Random(1, 10);
-
-                char operator_ = GenRandElement({'+', '-'});
-
-                val = (std::to_string(left) + " " + operator_ + " " + std::to_string(right));
+                val = (
+                        std::to_string(RandomNumberGenerator::Random(1, 10)) +
+                        " " +
+                        GenRandElement({'+', '-'}) +
+                        " " +
+                        std::to_string(RandomNumberGenerator::Random(1, 10))
+                        );
+                break;
             }
             case QuestionDifficulty::MEDIUM: {
-                int left = RandomNumberGenerator::Random(1, 25);
-                int right = RandomNumberGenerator::Random(1, 25);
-
-                char operator_ = GenRandElement({'+', '-'});
-
-                val = (std::to_string(left) + " " + operator_ + " " + std::to_string(right));
+                val = (
+                        std::to_string(RandomNumberGenerator::Random(1, 20)) +
+                        " " +
+                        GenRandElement({'+', '-'}) +
+                        " " +
+                        std::to_string(RandomNumberGenerator::Random(1, 20))
+                );
+                break;
             }
             case QuestionDifficulty::HARD: {
-                int left = RandomNumberGenerator::Random(1, 12);
-                int right = RandomNumberGenerator::Random(1, 12);
-
-                char operator_ = GenRandElement({'*', '/'});
-
-                val = (std::to_string(left) + " " + operator_ + " " + std::to_string(right));
+                val = (
+                        std::to_string(RandomNumberGenerator::Random(1, 15)) +
+                        " " +
+                        GenRandElement({'*', '/'}) +
+                        " " +
+                        std::to_string(RandomNumberGenerator::Random(1, 15))
+                );
+                break;
             }
             case QuestionDifficulty::ADVANCED: {
-                int left = RandomNumberGenerator::Random(1, 75);
-                int right = RandomNumberGenerator::Random(1, 75);
-
-                char operator_ = GenRandElement({'*', '/'});
-
-                val = (std::to_string(left) + " " + operator_ + " " + std::to_string(right));
+                val = (
+                        std::to_string(RandomNumberGenerator::Random(1, 25)) +
+                        " " +
+                        GenRandElement({'*', '/'}) +
+                        " " +
+                        std::to_string(RandomNumberGenerator::Random(1, 25))
+                );
+                break;
             }
         }
         return val;
@@ -72,7 +80,7 @@ public:
     static void GenerateQuestion(const QuestionType questionType, const QuestionDifficulty questionDifficulty) {
         switch (questionType) {
             case QuestionType::BASIC_ARITHMETIC:
-                std::cout << GenerateArithmeticQuestion(QuestionDifficulty::EASY) << "\n";
+                std::cout << GenerateArithmeticQuestion(questionDifficulty) << "\n";
                 break;
             case QuestionType::ALGEBRA:
                 break;
