@@ -53,7 +53,10 @@ private:
     };
 
     quadratic_equation_question GenerateAlgebraicQuestion() {
-
+        return quadratic_equation_question {
+            (double)(RandomNumberGenerator::Random(1, 10)),
+            (double)RandomNumberGenerator::Random(1, 10),
+            (double)RandomNumberGenerator::Random(1, 10)};
     }
 };
 
