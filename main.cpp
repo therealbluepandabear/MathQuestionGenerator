@@ -48,7 +48,7 @@ private:
         }
 
         [[nodiscard]] std::string ToString() const {
-            return "Find the root of " + std::to_string(a) + "x^2" + " + " + std::to_string(b) + "x" + " + " + std::to_string(c);
+            return "Find the root of " + std::to_string(a) + "x" + char(253) + "+" + std::to_string(b) + "x" + std::to_string(c);
         }
     };
 
@@ -149,8 +149,7 @@ public:
 
 int main() {
     auto question = AlgebraicQuestionGenerator::GenerateQuestion();
-
-    std::cout << question.ToString() << " " << question.GetRoot().positiveRoot << std::endl;
+    std::cout << question.ToString() << " Answer: (" << question.GetRoot().positiveRoot << ", " << question.GetRoot().negativeRoot << ") " << std::endl;
     return 0;
 }
 
