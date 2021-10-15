@@ -6,10 +6,6 @@ enum class QuestionDifficulty {
     EASY, MEDIUM, HARD, ADVANCED
 };
 
-enum class QuestionType {
-    BASIC_ARITHMETIC, ALGEBRA
-};
-
 class RandomNumberGenerator {
 public:
     // NAWAZ'S STACKOVERFLOW CODE LINK: https://stackoverflow.com/questions/7560114/random-number-c-in-some-range
@@ -23,7 +19,7 @@ public:
     }
 };
 
-class MathQuestionGenerator {
+class ArithmeticQuestionGenerator {
 private:
     struct question_t {
         int left, right;
@@ -83,19 +79,14 @@ private:
     }
 
 public:
-    static question_t GenerateQuestion(const QuestionType questionType, const QuestionDifficulty questionDifficulty) {
-        switch (questionType) {
-            case QuestionType::BASIC_ARITHMETIC:
-                return GenerateArithmeticQuestion(questionDifficulty);
-            case QuestionType::ALGEBRA:
-                break;
-        }
+    static question_t GenerateQuestion(const QuestionDifficulty questionDifficulty) {
+        return GenerateArithmeticQuestion(questionDifficulty);
     }
 
-    static std::vector<question_t> GenerateQuestions(const QuestionType questionType, const QuestionDifficulty questionDifficulty, const int amount) {
+    static std::vector<question_t> GenerateQuestions(const QuestionDifficulty questionDifficulty, const int amount) {
         std::vector<question_t> vector;
         for (int i = 0; i < amount; i++) {
-            auto question = GenerateQuestion(questionType, questionDifficulty);
+            auto question = GenerateQuestion(questionDifficulty);
             vector.push_back(question);
         }
         return vector;
@@ -103,7 +94,7 @@ public:
 };
 
 int main() {
-    auto vector = MathQuestionGenerator::GenerateQuestions(QuestionType::BASIC_ARITHMETIC, QuestionDifficulty::EASY, 10);
+    auto vector = ArithmeticQuestionGenerator::GenerateQuestions(QuestionDifficulty::EASY, 10);
     for (auto s : vector) {
         std::cout << s.ToString() << '\n';
     }
